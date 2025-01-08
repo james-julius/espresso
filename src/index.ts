@@ -5,12 +5,8 @@ import logger from './logger'
 
 const app = express()
 
-const appsToGiveEspressoTo = [
-    'https://carpoolio.vercel.app/'
-]
-
-cron.schedule('*/14 * * * *', () => {
-  logger.info(`Running scheduled espresso delivery at ${new Date().toISOString()}`);
+const runEspressoDelivery = () => {
+    logger.info(`Running scheduled espresso delivery at ${new Date().toISOString()}`);
     axios.get(appsToGiveEspressoTo[0])
         .then(() => {
             logger.info(`Pinged ${appsToGiveEspressoTo[0]} successfully.`);
@@ -19,8 +15,16 @@ cron.schedule('*/14 * * * *', () => {
         });
 
     logger.info('Completed scheduled espresso delivery ☕️');
+};
+
+const appsToGiveEspressoTo = [
+    'https://carpoolio.vercel.app/'
+];
+
+cron.schedule('*/14 * * * *', () => {
+  runEspressoDelivery();
 });
 
 app.listen(3000, () => {
-  logger.info('Server is running on port 3000');
-})
+    logger.info('Server is running on port 3000');
+});
