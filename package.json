@@ -1,0 +1,24 @@
+{
+  "name": "espresso",
+  "version": "0.0.0",
+  "description": "Pings your free tier apps to keep them from going to sleep",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "keywords": [],
+  "author": {
+    "name": "James Darby",
+    "email": "james@juliusdarby.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.7.16",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.8.3"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
