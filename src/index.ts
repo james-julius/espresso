@@ -2,11 +2,17 @@ import express from 'express'
 import cron from 'node-cron'
 import logger, { clearLogFile } from './logger'
 import runEspressoDelivery from './espresso'
-const app = express()
+import dotenv from 'dotenv'
+import configureSentry from './config'
+
+dotenv.config()
+configureSentry();
 
 const appsToGiveEspressoTo = [
     'https://carpoolio.vercel.app/'
 ];
+
+const app = express()
 
 /** Run espresso delivery every 14 minutes */
 cron.schedule('*/14 * * * *', () => {
