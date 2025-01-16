@@ -1,5 +1,19 @@
 import pino from 'pino';
 import fs from 'fs';
+import path from 'path';
+
+// Ensure logs directory exists
+const logDir = path.join(process.cwd(), 'logs');
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir, { recursive: true });
+}
+
+const logPath = path.join(logDir, 'app.log');
+
+// Create empty log file if it doesn't exist
+if (!fs.existsSync(logPath)) {
+    fs.writeFileSync(logPath, '');
+}
 
 const logger = pino({
     name: 'espresso',
@@ -8,16 +22,16 @@ const logger = pino({
         options: {
             colorize: true,
             translateTime: 'SYS:standard',
-            destination: './logs/app.log'
+            destination: logPath
         }
     }
 }, pino.destination({
-    dest: './logs/app.log',
+    dest: logPath,
     sync: false // asynchronous logging for better performance
 }));
 
 export const resetLogFile = () => {
-    fs.writeFile('./logs/app.log', '', (err) => {
+    fs.writeFile(logPath, '', (err) => {
         if (err) {
             logger.error('Error resetting log file:', err);
             return;
