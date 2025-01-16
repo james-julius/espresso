@@ -4,8 +4,7 @@
   "description": "Pings your free tier apps to keep them from going to sleep",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx src/index.ts",
-    "serve": "tsx src/index.ts"
+    "start": "tsx src/index.ts"
   },
   "keywords": [],
   "author": {
