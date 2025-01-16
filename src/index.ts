@@ -1,6 +1,6 @@
 import express from 'express'
 import cron from 'node-cron'
-import logger, { clearLogFile } from './logger'
+import logger, { resetLogFile } from './logger'
 import runEspressoDelivery from './espresso'
 import dotenv from 'dotenv'
 import configureSentry from './config'
@@ -21,7 +21,7 @@ cron.schedule('*/14 * * * *', () => {
 
 /** Clear log file every 7 days */
 cron.schedule('0 0 */7 * *', () => {
-    clearLogFile();
+    resetLogFile();
 });
 
 

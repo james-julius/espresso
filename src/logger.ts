@@ -16,13 +16,13 @@ const logger = pino({
     sync: false // asynchronous logging for better performance
 }));
 
-export const clearLogFile = () => {
+export const resetLogFile = () => {
     fs.writeFile('./logs/app.log', '', (err) => {
         if (err) {
-            logger.error('Error clearing log file:', err);
+            logger.error('Error resetting log file:', err);
             return;
         }
-        logger.info('Log file cleared successfully');
+        logger.info('Log file reset successfully');
     });
 };
 
