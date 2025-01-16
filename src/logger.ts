@@ -25,19 +25,6 @@ const logger = pino({
             destination: logPath
         }
     }
-}, pino.destination({
-    dest: logPath,
-    sync: false // asynchronous logging for better performance
-}));
-
-export const resetLogFile = () => {
-    fs.writeFile(logPath, '', (err) => {
-        if (err) {
-            logger.error('Error resetting log file:', err);
-            return;
-        }
-        logger.info('Log file reset successfully');
-    });
-};
+});
 
 export default logger;
