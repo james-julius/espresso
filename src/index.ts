@@ -9,7 +9,7 @@ dotenv.config()
 configureSentry();
 
 const appsToGiveEspressoTo = [
-    'https://carpoolio.vercel.app/'
+    'https://carpoolio.onrender.com/'
 ];
 
 const app = express()
