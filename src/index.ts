@@ -15,7 +15,7 @@ const appsToGiveEspressoTo = [
 
 const app = express()
 
-/** Run espresso delivery every 14 minutes */php
+/** Run espresso delivery every 14 minutes */
 cron.schedule('*/14 * * * *', () => {
   runEspressoDelivery(appsToGiveEspressoTo);
 });
