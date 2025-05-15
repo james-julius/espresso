@@ -9,12 +9,13 @@ dotenv.config()
 configureSentry();
 
 const appsToGiveEspressoTo = [
-    'https://carpoolio.onrender.com/'
+    'https://carpoolio.onrender.com/',
+    'https://backsplash-fastapi.onrender.com/'
 ];
 
 const app = express()
 
-/** Run espresso delivery every 14 minutes */
+/** Run espresso delivery every 14 minutes */php
 cron.schedule('*/14 * * * *', () => {
   runEspressoDelivery(appsToGiveEspressoTo);
 });
